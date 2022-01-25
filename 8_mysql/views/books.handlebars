@@ -1,0 +1,12 @@
+<h1>Livros</h1>
+<a href="/">Adicionar Livro</a>
+<div>
+    {{#each books}}
+        <div>
+            <a href="/books/{{this.id}}"> #{{this.id}} - <span class="bold">{{this.title}}</span> - {{this.pages_num}} paginas</a>
+            <form action="/books/delete/{{this.id}}" method="post">
+                <input type="submit" value="Apagar">
+            </form>
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,16 @@
+<h1>ola handlebars</h1>
+
+{{#if approved}}
+<p>Parabéns seu cadastro foi aprovado</p>
+{{else}}
+<p>Que pena seu cadastro não foi aprovado</p>
+{{/if}}
+
+<p>Seja bem vindo {{user.name}} {{user.surName}}</p>
+<p>{{palavra}}</p>
+
+{{#if auth}}
+<p>
+    Voce esta autenticado, <a href="/dashboard"> clique aqui</a> para acessar a area de membros!
+</p>
+{{/if}}

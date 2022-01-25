@@ -1,0 +1,13 @@
+<h1>Todas as tasks</h1>
+<ul class="task-list">
+    {{#each tasks}}
+    <li>
+        <a href="/" class="title">{{this.title}}</a>
+        <div class="actions">
+            <a href="/">Concluir</a>
+            <a href="/">Editar</a>
+            <a href="/">Excluir</a>
+        </div>
+    </li>
+    {{/each }}
+</ul>
