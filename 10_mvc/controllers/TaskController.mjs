@@ -22,4 +22,39 @@ export default class TaskController {
         await Task.create(task);
         res.redirect('/tasks')
     }
+
+    static async removeTask(req, res){
+        const id = req.body.id;
+
+        await Task.destroy({where: {id:id}});
+        res.redirect('/tasks')
+    }
+
+    static async updateTask(req, res){
+        const id = req.params.id;
+
+        const task = await Task.findOne({where: {id:id}, raw:true});
+
+        res.render('tasks/edit', {task});
+    }
+
+    static async updateTaskPost(req, res){
+        const id = req.body.id;
+
+        const task = {
+            title: req.body.title,
+            description: req.body.description
+        }
+
+        await Task.update(task, {where: {id:id}});
+        res.redirect('/tasks')
+    }
+
+    static async concluirTask(req, res){
+        const id = req.body.id;
+        const task = await Task.findOne({where: {id:id}, raw:true});
+        task.done = !task.done;
+        await Task.update(task, {where: {id:id}});
+        res.redirect('/tasks')
+    }
 }
